@@ -1,0 +1,4 @@
+.agents/
+.vercel/
+skills-lock.json
+*.log

@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thea Salinas | Information Systems & UI/UX Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-rgb: 255, 255, 255;
+  --bg: #ffffff;
+  --surface: #f4f8f5;
+  --surface-hover: #eaf2ed;
+  --surface-card: #ffffff;
+  --ink: #111a15;
+  --muted: #506357;
+  --muted-light: #7c9184;
+  --line: #d8e3dc;
+  --line-strong: #bacdc2;
+  --green: #1b5e3a;
+  --green-hover: #154b2e;
+  --green-light: #e6f4ec;
+  --green-glow: rgba(27, 94, 58, 0.16);
+  --on-green: #ffffff;
+  --wire: #b8c8be;
+  --card-shadow: 0 4px 20px -4px rgba(17, 26, 21, 0.06), 0 2px 6px -2px rgba(17, 26, 21, 0.04);
+  --card-shadow-hover: 0 14px 34px -8px rgba(27, 94, 58, 0.15), 0 4px 12px -2px rgba(17, 26, 21, 0.06);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: light;
+}
+
+[data-theme="dark"]{
+  --bg-rgb: 13, 20, 16;
+  --bg: #0d1410;
+  --surface: #141f19;
+  --surface-hover: #1a2a22;
+  --surface-card: #121c16;
+  --ink: #edf5f0;
+  --muted: #9ab0a3;
+  --muted-light: #6e8477;
+  --line: #223328;
+  --line-strong: #314a3b;
+  --green: #48bb78;
+  --green-hover: #60cf8d;
+  --green-light: rgba(72, 187, 120, 0.14);
+  --green-glow: rgba(72, 187, 120, 0.22);
+  --on-green: #08120b;
+  --wire: #32473a;
+  --card-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 14px 36px -6px rgba(72, 187, 120, 0.2);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark){
+  [data-theme="auto"]{
+    --bg-rgb: 13, 20, 16;
+    --bg: #0d1410;
+    --surface: #141f19;
+    --surface-hover: #1a2a22;
+    --surface-card: #121c16;
+    --ink: #edf5f0;
+    --muted: #9ab0a3;
+    --muted-light: #6e8477;
+    --line: #223328;
+    --line-strong: #314a3b;
+    --green: #48bb78;
+    --green-hover: #60cf8d;
+    --green-light: rgba(72, 187, 120, 0.14);
+    --green-glow: rgba(72, 187, 120, 0.22);
+    --on-green: #08120b;
+    --wire: #32473a;
+    --card-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.4);
+    --card-shadow-hover: 0 14px 36px -6px rgba(72, 187, 120, 0.2);
+    color-scheme: dark;
+  }
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font:400 16px/1.65 "IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  transition:background-color .25s ease,color .25s ease;
+}
+
+h1,h2,h3,h4{
+  font-family:"Bricolage Grotesque","IBM Plex Sans",sans-serif;
+  line-height:1.15;
+  letter-spacing:-0.025em;
+  color:var(--ink);
+}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--green);outline-offset:3px}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:96px 0;border-top:1px solid var(--line);position:relative}
+h2{font-size:clamp(32px,4.5vw,44px);font-weight:800;margin-bottom:14px;letter-spacing:-0.03em}
+.lead{color:var(--muted);font-size:18px;max-width:62ch;margin-bottom:44px;line-height:1.6}
+
+/* Navigation Bar */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(var(--bg-rgb),0.85);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  transition:border-color .25s ease;
+}
+nav .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  height:68px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+}
+.logo-badge{
+  width:34px;
+  height:34px;
+  border-radius:9px;
+  background:var(--green);
+  color:var(--on-green);
+  display:grid;
+  place-items:center;
+  font-weight:800;
+  font-size:17px;
+  font-family:"Bricolage Grotesque",sans-serif;
+  box-shadow:0 3px 10px var(--green-glow);
+}
+.logo-text{
+  font:700 19px "Bricolage Grotesque",sans-serif;
+  letter-spacing:-0.02em;
+}
+.logo-dot{
+  color:var(--green);
+}
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+nav ul{
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  background:var(--surface);
+  padding:4px;
+  border-radius:var(--radius-full);
+  border:1px solid var(--line);
+  overflow-x:auto;
+}
+nav ul a{
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
+  color:var(--muted);
+  padding:6px 14px;
+  border-radius:var(--radius-full);
+  transition:var(--transition);
+  white-space:nowrap;
+  display:inline-block;
+}
+nav ul a:hover{
+  color:var(--ink);
+  background:var(--surface-hover);
+}
+nav ul a.active{
+  color:var(--on-green);
+  background:var(--green);
+  box-shadow:0 2px 10px var(--green-glow);
+}
+
+/* Theme Toggle Button */
+.theme-btn{
+  background:var(--surface);
+  border:1px solid var(--line);
+  color:var(--ink);
+  width:38px;
+  height:38px;
+  border-radius:var(--radius-full);
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  transition:var(--transition);
+  flex-shrink:0;
+}
+.theme-btn:hover{
+  background:var(--surface-hover);
+  border-color:var(--line-strong);
+  transform:scale(1.05);
+}
+.theme-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 24px;
+  border-radius:var(--radius-full);
+  font-size:15px;
+  font-weight:600;
+  text-decoration:none;
+  border:1.5px solid transparent;
+  cursor:pointer;
+  transition:var(--transition);
+  white-space:nowrap;
+}
+.btn.primary{
+  background:var(--green);
+  color:var(--on-green);
+  box-shadow:0 4px 14px var(--green-glow);
+}
+.btn.primary:hover{
+  background:var(--green-hover);
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px var(--green-glow);
+}
+.btn.primary:active{transform:translateY(0)}
+.btn.ghost{
+  background:var(--surface);
+  color:var(--ink);
+  border-color:var(--line);
+}
+.btn.ghost:hover{
+  background:var(--surface-hover);
+  border-color:var(--line-strong);
+  color:var(--green);
+  transform:translateY(-2px);
+}
+.btn svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.2;fill:none;transition:transform .2s ease}
+.btn:hover svg.arrow{transform:translateX(3px)}
+
+/* Status Badge */
+.status-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:5px 14px;
+  background:var(--green-light);
+  border:1px solid rgba(27,94,58,0.18);
+  border-radius:var(--radius-full);
+  font-size:13px;
+  font-weight:600;
+  color:var(--green);
+  margin-bottom:18px;
+  width:fit-content;
+}
+.hero-avatar{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  object-fit:cover;
+  border:1.5px solid var(--green);
+  flex-shrink:0;
+  margin-left:-4px;
+}
+[data-theme="dark"] .status-pill,
+@media (prefers-color-scheme: dark){
+  [data-theme="auto"] .status-pill{
+    border-color:rgba(72,187,120,0.3);
+  }
+}
+.pulse-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--green);
+  position:relative;
+}
+.pulse-dot::after{
+  content:"";
+  position:absolute;
+  inset:-3px;
+  border-radius:50%;
+  background:var(--green);
+  opacity:.5;
+  animation:ping 2s cubic-bezier(0,0,0.2,1) infinite;
+}
+@keyframes ping{
+  75%, 100%{transform:scale(2.2);opacity:0}
+}
+
+/* Hero Section */
+.hero{border-top:0;padding:70px 0 96px}
+.hero .grid{display:grid;grid-template-columns:1.2fr 0.95fr;gap:56px;align-items:center}
+.hero h1{
+  font-size:clamp(40px,5.8vw,66px);
+  font-weight:800;
+  line-height:1.1;
+  letter-spacing:-0.035em;
+  margin-bottom:20px;
+}
+.hero h1 .highlight{
+  color:var(--green);
+  position:relative;
+  display:inline-block;
+}
+.hero p{
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.65;
+  max-width:54ch;
+  margin-bottom:34px;
+}
+.cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+
+/* Interactive Morph Box (Wireframe <-> Prototype) */
+.morph-card{
+  position:relative;
+  background:var(--surface-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--card-shadow);
+  overflow:hidden;
+  transition:var(--transition);
+}
+.morph-card:hover{
+  box-shadow:var(--card-shadow-hover);
+  border-color:var(--line-strong);
+}
+.browser-chrome{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 18px;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+.chrome-dots{display:flex;gap:6px}
+.chrome-dot{width:10px;height:10px;border-radius:50%;background:var(--wire)}
+.chrome-dot.r{background:#ff5f57}
+.chrome-dot.y{background:#febc2e}
+.chrome-dot.g{background:#28c840}
+.chrome-label{
+  font-size:12px;
+  font-weight:600;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-family:"IBM Plex Sans",sans-serif;
+}
+.chrome-badge{
+  font-size:11px;
+  padding:2px 8px;
+  border-radius:var(--radius-full);
+  background:var(--green-light);
+  color:var(--green);
+  font-weight:600;
+}
+.morph-stage{
+  position:relative;
+  aspect-ratio:4/4.2;
+  overflow:hidden;
+  cursor:pointer;
+  background:var(--bg);
+}
+.morph-stage .layer{
+  position:absolute;
+  inset:0;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transition:opacity .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1);
+}
+.morph-stage .lo{opacity:1;transform:scale(1)}
+.morph-stage .hi{opacity:0;transform:scale(0.98);pointer-events:none}
+.morph-card:hover .lo, .morph-card.on .lo{opacity:0;transform:scale(1.02);pointer-events:none}
+.morph-card:hover .hi, .morph-card.on .hi{opacity:1;transform:scale(1);pointer-events:auto}
+
+/* Lo-fi wireframe elements */
+.wire-bar{height:12px;border-radius:4px;background:var(--wire);opacity:.7}
+.wire-box{border:2px dashed var(--wire);border-radius:8px;flex:1;display:grid;place-items:center;color:var(--muted-light);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
+.wire-row{display:flex;gap:12px}.wire-row>*{flex:1}
+
+/* Hi-fi prototype elements */
+.hi-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:14px 16px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.hi-card b{display:block;font:800 28px "Bricolage Grotesque",sans-serif;color:var(--green);line-height:1}
+.hi-card span{font-size:12px;color:var(--muted);font-weight:500;margin-top:4px}
+.chart-box{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:14px 16px;
+  flex:1.4;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.chart-header{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);font-weight:600}
+.chart-badge{font-size:11px;color:var(--green);background:var(--green-light);padding:2px 7px;border-radius:4px;font-weight:600}
+.action-pill{
+  background:var(--green);
+  color:var(--on-green);
+  border-radius:var(--radius-full);
+  padding:10px 16px;
+  font-size:13px;
+  font-weight:600;
+  text-align:center;
+  box-shadow:0 4px 12px var(--green-glow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+.morph-toggle-bar{
+  padding:10px 16px;
+  border-top:1px solid var(--line);
+  background:var(--surface);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:12px;
+  color:var(--muted);
+}
+.morph-toggle-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-weight:600;
+  color:var(--green);
+}
+
+/* About Section */
+.about{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:48px;
+  align-items:start;
+}
+.about-media{
+  position:sticky;
+  top:96px;
+}
+.about-photo-card{
+  background:var(--surface-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:14px;
+  box-shadow:var(--card-shadow);
+  transition:var(--transition);
+}
+.about-photo-card:hover{
+  border-color:var(--line-strong);
+  box-shadow:var(--card-shadow-hover);
+  transform:translateY(-2px);
+}
+.about-photo-inner{
+  position:relative;
+  border-radius:calc(var(--radius-lg) - 4px);
+  overflow:hidden;
+  aspect-ratio:3 / 4;
+  background:var(--surface);
+}
+.about-photo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  transition:transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.about-photo-card:hover .about-photo{
+  transform:scale(1.025);
+}
+.about-photo-overlay{
+  position:absolute;
+  top:12px;
+  left:12px;
+  right:12px;
+  display:flex;
+  justify-content:flex-start;
+  pointer-events:none;
+}
+.about-photo-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 12px;
+  font-size:12px;
+  font-weight:600;
+  color:#ffffff;
+  background:rgba(13, 20, 16, 0.76);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255, 255, 255, 0.16);
+  border-radius:var(--radius-full);
+}
+.status-indicator{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#48bb78;
+  box-shadow:0 0 0 2px rgba(72, 187, 120, 0.35);
+  display:inline-block;
+}
+.about-photo-info{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:14px;
+  padding:2px 4px;
+}
+.about-photo-name{
+  font:700 17px "Bricolage Grotesque",sans-serif;
+  color:var(--ink);
+  line-height:1.2;
+}
+.about-photo-title{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:3px;
+}
+.about-campus-tag{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.05em;
+  padding:4px 8px;
+  background:var(--green-light);
+  color:var(--green);
+  border-radius:var(--radius-sm);
+  text-transform:uppercase;
+}
+.about-content{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+.about-text p{font-size:17px;color:var(--muted);line-height:1.7}
+.about-text p+p{margin-top:18px}
+.about-text strong{color:var(--ink);font-weight:600}
+
+.facts-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px;
+  list-style:none;
+}
+.fact-item{
+  background:var(--surface-card);
+  border:1px solid var(--line);
+  border-left:4px solid var(--green);
+  border-radius:var(--radius-md);
+  padding:16px 20px;
+  box-shadow:var(--card-shadow);
+  transition:var(--transition);
+}
+.fact-item:hover{
+  transform:translateX(4px);
+  border-color:var(--line-strong);
+  box-shadow:var(--card-shadow-hover);
+}
+.fact-label{
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--green);
+  margin-bottom:4px;
+}
+.fact-value{
+  font:700 18px "Bricolage Grotesque",sans-serif;
+  color:var(--ink);
+}
+.fact-sub{
+  font-size:14px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+/* Skills Section */
+.skills{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:20px;
+}
+.skill-card{
+  background:var(--surface-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:28px;
+  box-shadow:var(--card-shadow);
+  transition:var(--transition);
+  position:relative;
+  overflow:hidden;
+}
+.skill-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:var(--green);
+  opacity:0;
+  transition:var(--transition);
+}
+.skill-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--card-shadow-hover);
+  border-color:var(--line-strong);
+}
+.skill-card:hover::before{opacity:1}
+.skill-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+}
+.skill-icon{
+  width:40px;
+  height:40px;
+  border-radius:10px;
+  background:var(--green-light);
+  color:var(--green);
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+}
+.skill-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.skill-card h3{
+  font-size:20px;
+  font-weight:700;
+}
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  list-style:none;
+}
+.chips li{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-full);
+  padding:5px 12px;
+  font-size:13.5px;
+  font-weight:500;
+  color:var(--muted);
+  transition:var(--transition);
+}
+.skill-card:hover .chips li{
+  border-color:var(--line-strong);
+  color:var(--ink);
+}
+.chips li:hover{
+  background:var(--green-light);
+  color:var(--green);
+  border-color:var(--green);
+  transform:translateY(-1px);
+}
+
+/* Certs Section */
+.certs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.cert-card{
+  background:var(--surface-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:26px;
+  box-shadow:var(--card-shadow);
+  transition:var(--transition);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  position:relative;
+}
+.cert-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--line-strong);
+  box-shadow:var(--card-shadow-hover);
+}
+.cert-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.cert-icon{
+  width:42px;
+  height:42px;
+  border-radius:var(--radius-md);
+  background:var(--green-light);
+  color:var(--green);
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+}
+.cert-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cert-badge{
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  padding:3px 8px;
+  border-radius:var(--radius-sm);
+  background:var(--green-light);
+  color:var(--green);
+}
+.cert-title{
+  font:700 18px "Bricolage Grotesque",sans-serif;
+  color:var(--ink);
+  line-height:1.25;
+}
+.cert-issuer{
+  font-size:13px;
+  color:var(--muted);
+  font-weight:500;
+  margin-top:2px;
+}
+.cert-desc{
+  font-size:14.5px;
+  color:var(--muted);
+  line-height:1.55;
+}
+.cert-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:auto;
+  padding-top:8px;
+}
+.cert-tag{
+  font-size:11.5px;
+  background:var(--surface);
+  color:var(--muted);
+  padding:3px 8px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--line);
+}
+
+/* Projects Section */
+.feature{
+  display:flex;
+  flex-direction:column;
+  background:var(--surface-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--card-shadow);
+  overflow:hidden;
+  margin-bottom:32px;
+  transition:var(--transition);
+}
+.feature:hover{
+  box-shadow:var(--card-shadow-hover);
+  border-color:var(--line-strong);
+}
+
+/* Feature Preview Screenshot Frame */
+.feature-preview{
+  position:relative;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+.feature-browser-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 20px;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+.browser-address{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:var(--radius-full);
+  padding:4px 16px;
+  font-size:12px;
+  color:var(--muted);
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  max-width:320px;
+  width:100%;
+  justify-content:center;
+}
+.browser-address svg{color:var(--green)}
+.preview-badge{
+  font-size:11px;
+  font-weight:700;
+  color:var(--green);
+  background:var(--green-light);
+  padding:3px 10px;
+  border-radius:var(--radius-full);
+}
+.feature-img-link{
+  display:block;
+  position:relative;
+  overflow:hidden;
+  background:#0b140e;
+  cursor:zoom-in;
+}
+.feature-screenshot{
+  width:100%;
+  max-height:480px;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  transition:transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+.feature-img-link:hover .feature-screenshot{
+  transform:scale(1.015);
+}
+.img-caption-bar{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:14px 24px;
+  background:linear-gradient(to top, rgba(10, 18, 13, 0.9) 0%, rgba(10, 18, 13, 0.4) 60%, rgba(10, 18, 13, 0) 100%);
+  color:#ffffff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:13.5px;
+  font-weight:500;
+}
+.img-caption-bar span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-shadow:0 1px 4px rgba(0,0,0,0.7);
+}
+.zoom-hint{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  padding:3px 12px;
+  background:rgba(255,255,255,0.22);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  border-radius:var(--radius-full);
+  color:#ffffff;
+  font-weight:600;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+}
+.feature .body{padding:42px}
+.feature-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--green);
+  background:var(--green-light);
+  padding:4px 12px;
+  border-radius:var(--radius-full);
+  margin-bottom:14px;
+}
+.feature h3{
+  font-size:clamp(26px,3.4vw,34px);
+  margin-bottom:14px;
+  font-weight:800;
+}
+.feature .desc{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.65;
+  margin-bottom:20px;
+}
+.checklist{
+  list-style:none;
+  display:grid;
+  gap:10px;
+  margin-bottom:26px;
+}
+.checklist li{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:15px;
+  color:var(--ink);
+  line-height:1.5;
+}
+.checklist li svg{
+  width:18px;
+  height:18px;
+  color:var(--green);
+  flex-shrink:0;
+  margin-top:2px;
+}
+.feature dl{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:8px 18px;
+  font-size:14.5px;
+  border-top:1px solid var(--line);
+  padding-top:20px;
+}
+.feature dt{font-weight:600;color:var(--ink)}
+.feature dd{color:var(--muted)}
+
+/* Portals Panel on Featured Project */
+.portals{
+  background:linear-gradient(145deg, var(--green), #14492c);
+  color:var(--on-green);
+  padding:42px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  justify-content:center;
+  position:relative;
+}
+[data-theme="dark"] .portals,
+@media (prefers-color-scheme: dark){
+  [data-theme="auto"] .portals{
+    background:linear-gradient(145deg, #163624, #0d2116);
+    border-left:1px solid var(--line);
+    color:#e6f8ee;
+  }
+}
+.portals h4{
+  font:700 20px "Bricolage Grotesque",sans-serif;
+  color:var(--on-green);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.portal-card{
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:var(--radius-md);
+  padding:16px;
+  transition:var(--transition);
+}
+.portal-card:hover{
+  background:rgba(255,255,255,0.18);
+  transform:translateX(4px);
+  border-color:rgba(255,255,255,0.35);
+}
+.portal-card b{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:16px;
+  margin-bottom:4px;
+}
+.portal-card span{
+  font-size:13.5px;
+  opacity:.9;
+  line-height:1.4;
+  display:block;
+}
+
+/* Supporting Project Cards */
+.minis{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.mini-card{
+  background:var(--surface-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:32px;
+  box-shadow:var(--card-shadow);
+  transition:var(--transition);
+  display:flex;
+  flex-direction:column;
+}
+.mini-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--line-strong);
+  box-shadow:var(--card-shadow-hover);
+}
+.mini-meta{
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--green);
+  margin-bottom:10px;
+}
+.mini-card h3{
+  font-size:22px;
+  margin-bottom:12px;
+  font-weight:700;
+}
+.mini-card p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.6;
+  flex:1;
+  margin-bottom:20px;
+}
+.mini-card .project-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--green);
+  text-decoration:none;
+}
+.mini-card .project-link svg{
+  width:16px;
+  height:16px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:2.2;
+  transition:transform .2s ease;
+}
+.mini-card:hover .project-link svg{
+  transform:translateX(4px);
+}
+
+/* UI/UX Wireframes & Designs */
+.designs{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(310px,1fr));
+  gap:24px;
+}
+.design-card{
+  background:var(--surface-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--card-shadow);
+  overflow:hidden;
+  transition:var(--transition);
+}
+.design-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--line-strong);
+  box-shadow:var(--card-shadow-hover);
+}
+.design-preview{
+  aspect-ratio:16/10;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+}
+.preview-window{
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:14px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+.design-card-body{
+  padding:24px;
+}
+.design-badge{
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--green);
+  margin-bottom:6px;
+  display:inline-block;
+}
+.design-card h3{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+.design-card p{
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.55;
+}
+.flow-diagram{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:100%;
+  padding:0 8px;
+}
+.flow-node{
+  width:26%;
+  height:44px;
+  border:2px solid var(--green);
+  background:var(--green-light);
+  border-radius:6px;
+  display:grid;
+  place-items:center;
+  font-size:10px;
+  font-weight:700;
+  color:var(--green);
+}
+.flow-line{
+  flex:1;
+  height:2px;
+  background:var(--green);
+  position:relative;
+}
+.flow-line::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:-3px;
+  width:0;
+  height:0;
+  border-top:4px solid transparent;
+  border-bottom:4px solid transparent;
+  border-left:6px solid var(--green);
+}
+.tiles-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  height:100%;
+}
+.tile{
+  border-radius:6px;
+  border:1px solid var(--line);
+  background:var(--surface);
+  display:flex;
+  flex-direction:column;
+  padding:6px;
+  gap:4px;
+}
+.tile.active{
+  border-color:var(--green);
+  background:var(--green-light);
+}
+.design-note-box{
+  margin-top:32px;
+  padding:18px 24px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  font-size:14.5px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.design-note-box svg{
+  width:20px;
+  height:20px;
+  color:var(--green);
+  flex-shrink:0;
+}
+
+/* Contact Section */
+.contact{background:var(--surface)}
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  margin-top:10px;
+}
+.contact-card{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  background:var(--surface-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:24px;
+  text-decoration:none;
+  box-shadow:var(--card-shadow);
+  transition:var(--transition);
+}
+.contact-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--green);
+  box-shadow:var(--card-shadow-hover);
+}
+.contact-icon{
+  width:50px;
+  height:50px;
+  border-radius:12px;
+  background:var(--green-light);
+  color:var(--green);
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  transition:var(--transition);
+}
+.contact-card:hover .contact-icon{
+  background:var(--green);
+  color:var(--on-green);
+}
+.contact-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.contact-info b{
+  display:block;
+  font:700 18px "Bricolage Grotesque",sans-serif;
+  color:var(--ink);
+  margin-bottom:2px;
+}
+.contact-info span{
+  color:var(--muted);
+  font-size:14px;
+  word-break:break-all;
+}
+.contact-card .card-arrow{
+  margin-left:auto;
+  color:var(--muted-light);
+  transition:var(--transition);
+}
+.contact-card:hover .card-arrow{
+  color:var(--green);
+  transform:translateX(4px);
+}
+.contact-card .card-arrow svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* Footer */
+footer{
+  padding:32px 0;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:14px;
+  background:var(--bg);
+}
+footer .wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.back-top{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  transition:var(--transition);
+}
+.back-top:hover{
+  color:var(--green);
+  transform:translateY(-2px);
+}
+.back-top svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero .grid, .about, .feature-grid, .minis{grid-template-columns:1fr}
+  .about-media{position:static;max-width:380px;margin:0 auto;width:100%}
+  .feature .body, .portals{padding:30px}
+  .hero{padding:50px 0 70px}
+  section{padding:72px 0}
+  .feature-screenshot{max-height:280px}
+}
+@media (max-width:640px){
+  nav .wrap{height:auto;padding:8px 16px;gap:10px}
+  nav ul a{padding:5px 10px;font-size:13px}
+  .brand .logo-text{display:none}
+  .hero h1{font-size:36px}
+  .cta .btn{width:100%}
+  .facts-grid, .skills, .certs-grid, .designs, .contact-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav aria-label="Main Navigation">
+  <div class="wrap">
+    <a class="brand" href="#home">
+      <div class="logo-badge">TS</div>
+      <span class="logo-text">Thea Salinas<span class="logo-dot">.</span></span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-tabs" role="tablist">
+        <li><a href="#work" class="nav-tab active">Work</a></li>
+        <li><a href="#about" class="nav-tab">About</a></li>
+        <li><a href="#skills" class="nav-tab">Skills</a></li>
+        <li><a href="#certs" class="nav-tab">Certs</a></li>
+        <li><a href="#contacts" class="nav-tab">Contacts</a></li>
+      </ul>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle light or dark theme" title="Toggle theme">
+        <svg id="sunIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg id="moonIcon" style="display:none;" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero" id="home">
+  <div class="wrap grid">
+    <div>
+      <div class="status-pill">
+        <img src="ada2027.jpg" alt="Thea Salinas" class="hero-avatar">
+        <span class="pulse-dot"></span>
+        <span>Information Systems &middot; CHMSU Talisay</span>
+      </div>
+      <h1>Building digital solutions for <span class="highlight">real-world</span> challenges.</h1>
+      <p>I combine systems analysis, database architecture, and user-centered UI/UX design to turn complex organizational requirements into intuitive, high-impact digital tools.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">
+          <span>Explore My Work</span>
+          <svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn ghost" href="#contacts">
+          <span>Get in Touch</span>
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Interactive Morph Showcase -->
+    <div class="morph-card" id="morphCard" role="region" aria-label="Interactive design transition from wireframe to finished UI">
+      <div class="browser-chrome">
+        <div class="chrome-dots">
+          <span class="chrome-dot r"></span>
+          <span class="chrome-dot y"></span>
+          <span class="chrome-dot g"></span>
+        </div>
+        <div class="chrome-label">
+          <span>nvc-portal.prototype.io</span>
+        </div>
+        <span class="chrome-badge" id="chromeStateBadge">Hi-Fi on Hover</span>
+      </div>
+      
+      <div class="morph-stage" id="morphStage">
+        <!-- Low Fidelity Wireframe View -->
+        <div class="layer lo">
+          <div class="wire-bar" style="width:45%;height:14px"></div>
+          <div class="wire-row">
+            <div class="wire-box" style="height:76px">[ Metric A ]</div>
+            <div class="wire-box" style="height:76px">[ Metric B ]</div>
+          </div>
+          <div class="wire-box" style="flex:1.4">
+            <span>&bull; &bull; &bull; Participation Timeline Chart &bull; &bull; &bull;</span>
+          </div>
+          <div class="wire-box" style="height:44px;border-style:solid;border-color:var(--wire);background:var(--surface)">
+            [ Action Trigger Button ]
+          </div>
+        </div>
+
+        <!-- High Fidelity UI View -->
+        <div class="layer hi">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-weight:700;font-size:15px">Dashboard Overview</span>
+            <span style="font-size:12px;color:var(--green);font-weight:600">&bull; Live Preview</span>
+          </div>
+          <div class="wire-row">
+            <div class="hi-card">
+              <b>128</b>
+              <span>Active Volunteers</span>
+            </div>
+            <div class="hi-card">
+              <b>14</b>
+              <span>Partner Orgs</span>
+            </div>
+          </div>
+          <div class="chart-box">
+            <div class="chart-header">
+              <span>Monthly Volunteer Growth</span>
+              <span class="chart-badge">+24% YoY</span>
+            </div>
+            <svg viewBox="0 0 200 60" width="100%" height="52" preserveAspectRatio="none" aria-hidden="true" style="margin-top:6px;overflow:visible">
+              <defs>
+                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--green)" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="var(--green)" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+              <polygon fill="url(#chartGrad)" points="0,55 0,46 32,38 64,42 96,24 128,28 160,12 200,6 200,55"/>
+              <polyline fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="0,46 32,38 64,42 96,24 128,28 160,12 200,6"/>
+              <circle cx="200" cy="6" r="3.5" fill="var(--green)"/>
+            </svg>
+          </div>
+          <div class="action-pill">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Review & Approve Applications (6)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="morph-toggle-bar">
+        <span class="morph-toggle-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Wireframe to Finished UI
+        </span>
+        <span>Tap or Hover to Switch</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- About Section -->
+<section id="about">
+  <div class="wrap about">
+    <div class="about-media">
+      <div class="about-photo-card">
+        <div class="about-photo-inner">
+          <img src="ada2027.jpg" alt="Thea Salinas" class="about-photo" loading="eager">
+          <div class="about-photo-overlay">
+            <span class="about-photo-badge">
+              <span class="status-indicator" aria-hidden="true"></span>
+              <span>Available for Roles &amp; Projects</span>
+            </span>
+          </div>
+        </div>
+        <div class="about-photo-info">
+          <div>
+            <div class="about-photo-name">Thea Salinas</div>
+            <div class="about-photo-title">Information Systems &amp; UI/UX</div>
+          </div>
+          <span class="about-campus-tag">CHMSU</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="about-content">
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>I am an <strong>Information Systems student at Carlos Hilado Memorial State University</strong> (Talisay Campus). My focus sits right where organizational strategy meets digital design &mdash; analyzing workflows, structuring data pipelines, and building digital interfaces that solve real organizational bottlenecks.</p>
+        <p>Through practical client engagements and academic projects, I have developed a holistic end-to-end perspective: from eliciting stakeholder requirements and drafting comprehensive Entity Relationship Diagrams (ERDs) to crafting accessible Figma prototypes and coding interactive web solutions.</p>
+        <p>I aim to build dependable, beautifully designed systems that make day-to-day operations simpler, faster, and more transparent for the people who rely on them.</p>
+      </div>
+      
+      <ul class="facts-grid">
+        <li class="fact-item">
+          <div class="fact-label">Primary Specialization</div>
+          <div class="fact-value">Systems Analysis &amp; UI/UX</div>
+          <div class="fact-sub">Bridging requirements with clean digital interactions</div>
+        </li>
+        <li class="fact-item">
+          <div class="fact-label">Academic Institution</div>
+          <div class="fact-value">CHMSU Talisay Campus</div>
+          <div class="fact-sub">Bachelor of Science in Information Systems</div>
+        </li>
+        <li class="fact-item">
+          <div class="fact-label">Featured Partner</div>
+          <div class="fact-value">Negros Volunteers for Change</div>
+          <div class="fact-sub">Integrated volunteer &amp; partner management system</div>
+        </li>
+        <li class="fact-item">
+          <div class="fact-label">Core Tech Stack</div>
+          <div class="fact-value">Python, Django &amp; Modern Web</div>
+          <div class="fact-sub">SQL, JavaScript, HTML5/CSS3, Figma, Docker</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Work Section -->
+<section id="work">
+  <span id="projects" style="position:relative;top:-84px;visibility:hidden;display:block;"></span>
+  <div class="wrap">
+    <h2>Featured Work</h2>
+    <p class="lead">System case studies addressing organizational governance, data synchronization, and operational clarity.</p>
+
+    <!-- Main Feature Project Card -->
+    <article class="feature">
+      <!-- System Screenshot Preview Mockup -->
+      <div class="feature-preview">
+        <div class="feature-browser-bar">
+          <div class="chrome-dots">
+            <span class="chrome-dot r"></span>
+            <span class="chrome-dot y"></span>
+            <span class="chrome-dot g"></span>
+          </div>
+          <div class="browser-address">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>nvc-portal.org/login</span>
+          </div>
+          <span class="preview-badge">Production Interface</span>
+        </div>
+        <a href="Screenshot%202026-10-16%20233654.png" target="_blank" rel="noopener noreferrer" class="feature-img-link" title="Click to view full resolution screenshot">
+          <img src="Screenshot%202026-10-16%20233654.png" alt="NVC Foundation Integrated Volunteer and Partners Management System - Login Interface" class="feature-screenshot">
+          <div class="img-caption-bar">
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              NVC Centralized Multi-Role Authentication &amp; Volunteer Portal
+            </span>
+            <span class="zoom-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              Click to Enlarge
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <div class="feature-grid">
+        <div class="body">
+          <div class="feature-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Featured Case Study &middot; Information Systems
+          </div>
+          <h3>NVC Integrated Volunteer and Partners Management System</h3>
+          <p class="desc">A unified platform built for Negros Volunteers for Change (NVC Foundation). It replaces fragmented manual logs with centralized portals for volunteer coordination, partner engagement, and administrative analytics.</p>
+          
+          <ul class="checklist">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Role-tailored access control across 3 specialized portals (Admin, Volunteer, Partner).</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>End-to-end volunteer onboarding, background verification, and project hour logs.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Partner organization collaboration dashboards for joint mission logistics.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Integrated child protection safeguards and consent checks on public media uploads.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Predictive participation metrics and automated reporting exports.</span>
+            </li>
+          </ul>
+
+          <dl>
+            <dt>My Responsibilities</dt>
+            <dd>Systems requirements elicitation, workflow architecture, relational schema/ERD design, and UI wireframing.</dd>
+            <dt>Technologies</dt>
+            <dd>Python, Django Framework, SQL, HTML5/CSS3, Wireframing &amp; UX Specs.</dd>
+          </dl>
+        </div>
+
+        <div class="portals" aria-label="Portals overview for NVC project">
+          <h4>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Three Portals &middot; One Ecosystem
+          </h4>
+          
+          <div class="portal-card">
+            <b>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M14 9h5"/><path d="M14 15h5"/></svg>
+              Administrator Console
+            </b>
+            <span>Program management, event dispatch, compliance audits, and analytics reports.</span>
+          </div>
+
+          <div class="portal-card">
+            <b>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+              Volunteer Portal
+            </b>
+            <span>Profile setup, skills self-reporting, event signups, and tracked service hours.</span>
+          </div>
+
+          <div class="portal-card">
+            <b>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+              Partner Organization Portal
+            </b>
+            <span>Co-host initiatives, submit resource requests, and sync mission milestones.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Supporting Projects Grid -->
+    <div class="minis">
+      <article class="mini-card">
+        <div class="mini-meta">Web Development Concept</div>
+        <h3>E-Commerce Small Business Platforms</h3>
+        <p>Curated storefront builds with interactive product showcases, dynamic filtering, responsive shopping bag interactions, and streamlined checkout UX designed for independent retail brands.</p>
+        <span class="project-link">
+          <span>View UI &amp; Architecture Details</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </article>
+
+      <article class="mini-card">
+        <div class="mini-meta">Python Systems Development</div>
+        <h3>University Student Enrollment System</h3>
+        <p>An administrative desktop records application implementing CRUD student registries, subject pre-requisite verifications, course capacity locks, and automated grading transcript generation.</p>
+        <span class="project-link">
+          <span>View System Design Specs</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- UI/UX Wireframes & Designs Section -->
+<section id="designs">
+  <div class="wrap">
+    <h2>Wireframes &amp; UI/UX Specs</h2>
+    <p class="lead">How rough exploratory sketches evolve into functional, user-tested interface components.</p>
+    
+    <div class="designs">
+      <!-- Card 1 -->
+      <div class="design-card">
+        <div class="design-preview">
+          <div class="preview-window">
+            <div style="height:10px;width:38%;background:var(--wire);border-radius:3px"></div>
+            <div style="flex:1;border:2px dashed var(--wire);border-radius:6px;display:grid;place-items:center;font-size:11px;color:var(--muted-light)">
+              [ Navigation Hierarchy &amp; Content Zones ]
+            </div>
+            <div style="display:flex;gap:6px">
+              <div style="height:20px;flex:1;border:1px dashed var(--wire);border-radius:4px"></div>
+              <div style="height:20px;flex:1;border:1px dashed var(--wire);border-radius:4px"></div>
+            </div>
+          </div>
+        </div>
+        <div class="design-card-body">
+          <span class="design-badge">Phase 01 &middot; Structural</span>
+          <h3>Low-Fidelity Wireframes</h3>
+          <p>Mapping screen layouts, content priority, navigational flow, and form inputs prior to aesthetic decisions.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="design-card">
+        <div class="design-preview">
+          <div class="preview-window">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="height:10px;width:35%;background:var(--green);border-radius:3px"></div>
+              <div style="height:8px;width:18px;background:var(--green-light);border-radius:2px"></div>
+            </div>
+            <div class="tiles-grid">
+              <div class="tile active">
+                <div style="height:6px;width:60%;background:var(--green);border-radius:2px"></div>
+                <div style="font-size:12px;font-weight:700;color:var(--green)">140+</div>
+              </div>
+              <div class="tile">
+                <div style="height:6px;width:50%;background:var(--wire);border-radius:2px"></div>
+                <div style="font-size:12px;font-weight:700;color:var(--muted)">Active</div>
+              </div>
+              <div class="tile">
+                <div style="height:6px;width:50%;background:var(--wire);border-radius:2px"></div>
+                <div style="font-size:12px;font-weight:700;color:var(--muted)">Logs</div>
+              </div>
+              <div class="tile">
+                <div style="height:6px;width:70%;background:var(--wire);border-radius:2px"></div>
+                <div style="font-size:12px;font-weight:700;color:var(--muted)">Audits</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="design-card-body">
+          <span class="design-badge">Phase 02 &middot; Design System</span>
+          <h3>High-Fidelity Interface Design</h3>
+          <p>Curated forest-green visual identity, typography scales, card elevations, accessibility contrasts, and micro-interactions.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="design-card">
+        <div class="design-preview">
+          <div class="preview-window">
+            <div class="flow-diagram">
+              <div class="flow-node">Start</div>
+              <div class="flow-line"></div>
+              <div class="flow-node">Verify</div>
+              <div class="flow-line"></div>
+              <div class="flow-node">Approve</div>
+            </div>
+          </div>
+        </div>
+        <div class="design-card-body">
+          <span class="design-badge">Phase 03 &middot; Logic &amp; Routing</span>
+          <h3>User Flows &amp; State Diagrams</h3>
+          <p>Documenting logical decision branching, error fallback states, and multi-actor approvals across systems.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="design-note-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <span>Every design artifact is built in consultation with active stakeholder feedback to minimize friction and ensure quick adoption.</span>
+    </div>
+  </div>
+</section>
+
+<!-- Technical Skills Section -->
+<section id="skills">
+  <div class="wrap">
+    <h2>Technical Competencies</h2>
+    <p class="lead">Core pillars developed across systems analysis, software engineering, and digital experience design.</p>
+    
+    <div class="skills">
+      <!-- Web Dev -->
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Web Development</h3>
+        </div>
+        <ul class="chips">
+          <li>HTML5</li>
+          <li>CSS3 / Vanilla</li>
+          <li>JavaScript</li>
+          <li>Python</li>
+          <li>Django</li>
+          <li>REST Concepts</li>
+        </ul>
+      </div>
+
+      <!-- Database -->
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <h3>Database Management</h3>
+        </div>
+        <ul class="chips">
+          <li>SQL</li>
+          <li>Relational Schema Design</li>
+          <li>ERD Modeling</li>
+          <li>Data Normalization</li>
+          <li>Query Optimization</li>
+        </ul>
+      </div>
+
+      <!-- Systems Analysis -->
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Systems & Process Analysis</h3>
+        </div>
+        <ul class="chips">
+          <li>Requirements Elicitation</li>
+          <li>Workflow Modeling</li>
+          <li>Use Case Specifications</li>
+          <li>System Documentation</li>
+          <li>BPMN Diagrams</li>
+        </ul>
+      </div>
+
+      <!-- UI/UX -->
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/></svg>
+          </div>
+          <h3>UI/UX Design</h3>
+        </div>
+        <ul class="chips">
+          <li>Lo-Fi Wireframing</li>
+          <li>Hi-Fi Prototyping</li>
+          <li>Design Systems</li>
+          <li>User Journey Mapping</li>
+          <li>Responsive Layouts</li>
+        </ul>
+      </div>
+
+      <!-- IT & Automation -->
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>IT & Workflow Automation</h3>
+        </div>
+        <ul class="chips">
+          <li>Cybersecurity Basics</li>
+          <li>Docker Containerization</li>
+          <li>n8n Automations</li>
+          <li>Version Control (Git)</li>
+          <li>Linux CLI</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications Section -->
+<section id="certs">
+  <div class="wrap">
+    <h2>Certifications &amp; Credentials</h2>
+    <p class="lead">Verified qualifications across user experience design, database architecture, systems analysis, and modern software development.</p>
+
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <span class="cert-badge">Professional</span>
+        </div>
+        <div>
+          <div class="cert-title">Google UX Design Certificate</div>
+          <div class="cert-issuer">Google &middot; Coursera</div>
+        </div>
+        <p class="cert-desc">Comprehensive certification covering user research, lo-fi wireframing, design systems, usability testing, and interactive prototyping.</p>
+        <div class="cert-tags">
+          <span class="cert-tag">Figma</span>
+          <span class="cert-tag">User Research</span>
+          <span class="cert-tag">Prototyping</span>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <span class="cert-badge">Database</span>
+        </div>
+        <div>
+          <div class="cert-title">Database Management &amp; SQL Specialist</div>
+          <div class="cert-issuer">Information Systems Academic Credential</div>
+        </div>
+        <p class="cert-desc">Relational database design, normalization (1NF–3NF), ERD architecture, and complex SQL data query optimization.</p>
+        <div class="cert-tags">
+          <span class="cert-tag">PostgreSQL</span>
+          <span class="cert-tag">SQL</span>
+          <span class="cert-tag">Data Modeling</span>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <span class="cert-badge">Development</span>
+        </div>
+        <div>
+          <div class="cert-title">Python &amp; Django Web Systems</div>
+          <div class="cert-issuer">Software Engineering Training</div>
+        </div>
+        <p class="cert-desc">Backend development, RESTful APIs, MVC architecture, ORM query handling, and role-based security authentication.</p>
+        <div class="cert-tags">
+          <span class="cert-tag">Python</span>
+          <span class="cert-tag">Django</span>
+          <span class="cert-tag">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <span class="cert-badge">Methodology</span>
+        </div>
+        <div>
+          <div class="cert-title">Systems Analysis &amp; Agile Workflows</div>
+          <div class="cert-issuer">CHMSU IS Curriculum &middot; Industry Practicum</div>
+        </div>
+        <p class="cert-desc">Business process modeling (BPMN), stakeholder requirements elicitation, workflow mapping, and sprint backlog coordination.</p>
+        <div class="cert-tags">
+          <span class="cert-tag">BPMN</span>
+          <span class="cert-tag">Agile</span>
+          <span class="cert-tag">Requirements</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contacts" class="contact">
+  <span id="contact" style="position:relative;top:-84px;visibility:hidden;display:block;"></span>
+  <div class="wrap">
+    <h2>Let's Connect</h2>
+    <p class="lead">Open to internships, junior developer roles, systems analysis projects, and collaborative tech opportunities.</p>
+    
+    <div class="contact-grid">
+      <!-- Email -->
+      <a class="contact-card" href="mailto:thea.salinas@example.com">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="contact-info">
+          <b>Direct Email</b>
+          <span>thea.salinas@example.com</span>
+        </div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- LinkedIn -->
+      <a class="contact-card" href="https://linkedin.com/in/theasalinas" target="_blank" rel="noopener noreferrer">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div class="contact-info">
+          <b>LinkedIn Profile</b>
+          <span>linkedin.com/in/theasalinas</span>
+        </div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- GitHub -->
+      <a class="contact-card" href="https://github.com/theasalinas" target="_blank" rel="noopener noreferrer">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </div>
+        <div class="contact-info">
+          <b>GitHub Repository</b>
+          <span>github.com/theasalinas</span>
+        </div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Thea Salinas &middot; Information Systems Portfolio</span>
+    <a class="back-top" href="#home">
+      <span>Back to Top</span>
+      <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+// Theme Switcher Logic
+const themeToggle = document.getElementById('themeToggle');
+const sunIcon = document.getElementById('sunIcon');
+const moonIcon = document.getElementById('moonIcon');
+const htmlEl = document.documentElement;
+
+function getPreferredTheme() {
+  const saved = localStorage.getItem('theme');
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function updateThemeIcons(theme) {
+  const isDark = theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  if (isDark) {
+    sunIcon.style.display = 'block';
+    moonIcon.style.display = 'none';
+  } else {
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'block';
+  }
+}
+
+function setTheme(theme) {
+  htmlEl.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  updateThemeIcons(theme);
+}
+
+// Initial theme setup
+const currentTheme = getPreferredTheme();
+setTheme(currentTheme);
+
+themeToggle.addEventListener('click', () => {
+  const active = htmlEl.getAttribute('data-theme');
+  const next = (active === 'dark' || (active === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) ? 'light' : 'dark';
+  setTheme(next);
+});
+
+// Interactive Morph Card Click Toggle
+const morphCard = document.getElementById('morphCard');
+const chromeBadge = document.getElementById('chromeStateBadge');
+
+if (morphCard) {
+  morphCard.addEventListener('click', () => {
+    morphCard.classList.toggle('on');
+    const isOn = morphCard.classList.contains('on');
+    if (chromeBadge) {
+      chromeBadge.textContent = isOn ? 'Hi-Fi Active (Click to reset)' : 'Hi-Fi on Hover';
+    }
+  });
+}
+
+// Navigation Tabs ScrollSpy
+const navTabs = document.querySelectorAll('.nav-tabs a');
+const tabSections = [
+  { id: 'about', el: document.getElementById('about') },
+  { id: 'work', el: document.getElementById('work') },
+  { id: 'skills', el: document.getElementById('skills') },
+  { id: 'certs', el: document.getElementById('certs') },
+  { id: 'contacts', el: document.getElementById('contacts') }
+];
+
+function updateActiveTab() {
+  const scrollPos = window.scrollY + 160;
+  let activeId = 'about';
+
+  tabSections.forEach(({ id, el }) => {
+    if (el && scrollPos >= el.offsetTop) {
+      activeId = id;
+    }
+  });
+
+  navTabs.forEach(tab => {
+    const target = tab.getAttribute('href').replace('#', '');
+    if (target === activeId) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', updateActiveTab, { passive: true });
+updateActiveTab();
+
+navTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    navTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
