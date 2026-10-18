@@ -1,0 +1,9 @@
+{
+  "name": "thea-salinas-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Thea Salinas Information Systems & UI/UX Portfolio",
+  "scripts": {
+    "start": "serve ."
+  }
+}
